@@ -12,6 +12,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>" />
     <link rel="apple-touch-icon" href="./photos/p1.jpg" />
     <meta name="apple-mobile-web-app-title" content="给雁茹" />
+    <link rel="manifest" href="./manifest.json" />
     <title>Merry Christmas · 给雁茹</title>
     <!-- 金色定版：基于 nobody-r/christmas-tree（MIT/开源）；完整版含手势识别、音乐与回忆相册 -->
     <!-- Tailwind CSS is bundled locally via @tailwindcss/vite; MediaPipe scripts load on-demand -->
@@ -48,12 +49,13 @@
       #loading .star { font-size: 34px; color: #ffd98a; text-shadow: 0 0 18px rgba(255,217,138,.9), 0 0 46px rgba(255,180,80,.5); animation: shimmer 1.6s ease-in-out infinite; }
       #loading .t1 { font-size: 19px; letter-spacing: .18em; }
       #loading .t2 { font-size: 12.5px; letter-spacing: .28em; color: rgba(255,217,138,.55); }
+      #loading .t3 { font-size: 12px; letter-spacing: .22em; color: rgba(255,217,138,.42); }
     </style>
     <script type="module" crossorigin src="./assets/index-CZPyPNXc.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-BeE7YxDE.css">
   </head>
   <body>
-    <div id="root"><div id="loading"><div class="star">✦</div><div class="t1">Merry Christmas · 给雁茹</div><div class="t2">正在为你点亮圣诞树…</div></div></div>
+    <div id="root"><div id="loading"><div class="star">✦</div><div class="t1">Merry Christmas · 给雁茹</div><div class="t2">正在为你点亮圣诞树…</div><div class="t3" id="cd"></div></div></div>
     <style>
       #yanru { position: fixed; left: 50%; bottom: 4.2%; transform: translateX(-50%); z-index: 10;
         pointer-events: none; text-align: center; font-family: "KaiTi","STKaiti",serif; color: #ffd9ec;
@@ -63,6 +65,23 @@
     </style>
     <div id="yanru"><div class="l1">亲爱的雁茹 · 圣诞快乐</div><div class="l2">愿所有的美好都如期而至 —— 杨家郡</div></div>
     <script>
+      (function () {
+        var cd = document.getElementById('cd');
+        if (cd) {
+          var now = new Date();
+          var xmas = new Date(now.getFullYear(), 11, 25);
+          if (now >= new Date(now.getFullYear(), 11, 26)) xmas = new Date(now.getFullYear() + 1, 11, 25);
+          var days = Math.round((new Date(xmas.getFullYear(), 11, 25) - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
+          cd.textContent = days <= 0 ? '就是今天 · 圣诞快乐' : '距离圣诞节还有 ' + days + ' 天';
+        }
+        setTimeout(function () {
+          var l = document.getElementById('loading');
+          if (l) {
+            var t2 = l.querySelector('.t2');
+            if (t2) t2.textContent = '加载比平时久一点，再等等它；一直不出现的话，换个浏览器试试';
+          }
+        }, 12000);
+      })();
       if ('serviceWorker' in navigator && location.protocol === 'https:') {
         window.addEventListener('load', function () {
           navigator.serviceWorker.register('./sw.js').catch(function () {});

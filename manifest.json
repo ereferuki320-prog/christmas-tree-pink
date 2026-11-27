@@ -1,0 +1,16 @@
+{
+  "name": "Merry Christmas · 给雁茹",
+  "short_name": "给雁茹",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#070b18",
+  "theme_color": "#070b18",
+  "icons": [
+    {
+      "src": "./photos/p1.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

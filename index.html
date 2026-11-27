@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070b18" />
+    <meta name="description" content="Merry Christmas · 给雁茹 — 一棵为你点亮的圣诞树" />
     <title>Merry Christmas · 给雁茹</title>
-    <!-- 粉色版：基于 nobody-r/christmas-tree（MIT/开源）改色，树身金色→粉紫；手势识别与音乐已剥离，可离线打开 -->
+    <!-- 金色定版：基于 nobody-r/christmas-tree（MIT/开源）；完整版含手势识别、音乐与回忆相册 -->
     <!-- Tailwind CSS is bundled locally via @tailwindcss/vite; MediaPipe scripts load on-demand -->
     <style>
       body {
@@ -31,12 +33,20 @@
         0% { background-position: 0% 0%; }
         100% { background-position: 0% 200%; }
       }
+      #loading {
+        position: fixed; inset: 0; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 14px;
+        background: #070b18; color: #ffd98a; text-align: center; padding: 0 24px;
+      }
+      #loading .star { font-size: 34px; color: #ffd98a; text-shadow: 0 0 18px rgba(255,217,138,.9), 0 0 46px rgba(255,180,80,.5); animation: shimmer 1.6s ease-in-out infinite; }
+      #loading .t1 { font-size: 19px; letter-spacing: .18em; }
+      #loading .t2 { font-size: 12.5px; letter-spacing: .28em; color: rgba(255,217,138,.55); }
     </style>
     <script type="module" crossorigin src="./assets/index-CZPyPNXc.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-BeE7YxDE.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><div id="loading"><div class="star">✦</div><div class="t1">Merry Christmas · 给雁茹</div><div class="t2">正在为你点亮圣诞树…</div></div></div>
     <style>
       #yanru { position: fixed; left: 50%; bottom: 4.2%; transform: translateX(-50%); z-index: 10;
         pointer-events: none; text-align: center; font-family: "KaiTi","STKaiti",serif; color: #ffd9ec;

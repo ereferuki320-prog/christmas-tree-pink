@@ -1,9 +1,9 @@
 /* 给雁茹的圣诞树 — 离线缓存：第二次打开秒开，断网也能看 */
-const CACHE = 'yanru-tree-v3';
+const CACHE = 'yanru-tree-v4';
 const CORE = [
   './',
   './index.html',
-  './assets/index-CZPyPNXc.js',
+  './assets/index-CZPyPNXc-v2.js',
   './assets/index-BeE7YxDE.css'
 ];
 
